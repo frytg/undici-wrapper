@@ -1,0 +1,27 @@
+{
+	"name": "undici-wrapper",
+	"version": "0.0.1",
+	"description": "Lightweight wrapper around Undici HTTP requests",
+	"main": "src/index.js",
+	"scripts": {
+		"reinstall": "rm -rf node_modules && rm yarn.lock && yarn"
+	},
+	"engines": {
+		"npm": ">=7",
+		"node": ">=14"
+	},
+	"author": "Daniel Freytag",
+	"license": "MIT",
+	"private": false,
+	"dependencies": {
+		"abort-controller": "^3.0.0",
+		"undici": "^4.7.0"
+	},
+	"devDependencies": {
+		"@swrlab/eslint-plugin-swr": "0.1.2",
+		"@swrlab/swr-prettier-config": "^0.1.2",
+		"eslint": "^7.32.0",
+		"prettier": "^2.4.1"
+	},
+	"prettier": "@swrlab/swr-prettier-config"
+}
