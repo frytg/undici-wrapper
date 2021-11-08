@@ -15,7 +15,7 @@
 	"private": false,
 	"dependencies": {
 		"abort-controller": "^3.0.0",
-		"undici": "^4.7.0"
+		"undici": "^4.9.5"
 	},
 	"devDependencies": {
 		"@swrlab/eslint-plugin-swr": "0.1.2",
