@@ -1,6 +1,6 @@
 {
 	"name": "undici-wrapper",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Lightweight wrapper around Undici HTTP requests",
 	"main": "src/index.js",
 	"scripts": {
@@ -15,13 +15,17 @@
 	"private": false,
 	"dependencies": {
 		"abort-controller": "^3.0.0",
-		"undici": "^4.7.0"
+		"undici": "^4.10.0"
 	},
 	"devDependencies": {
 		"@swrlab/eslint-plugin-swr": "0.1.2",
 		"@swrlab/swr-prettier-config": "^0.1.2",
-		"eslint": "^7.32.0",
+		"eslint": "^8.2.0",
 		"prettier": "^2.4.1"
 	},
+	"keywords": [
+		"undici",
+		"http"
+	],
 	"prettier": "@swrlab/swr-prettier-config"
 }
