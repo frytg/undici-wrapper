@@ -10,7 +10,7 @@ const { name, version } = require('../package.json')
 const userAgent = `${name}/${version}`
 
 module.exports = {
-	keepAliveTimeout: 180e3,
+	keepAliveTimeout: 30e3,
 	headersTimeout: 0,
 	bodyTimeout: 0,
 	headers: {
