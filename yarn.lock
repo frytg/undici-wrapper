@@ -1711,10 +1711,10 @@ unbox-primitive@^1.0.1:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
-undici@^4.12.0:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-4.12.0.tgz#89dfd99f0257c89a971b933b195188747864c730"
-  integrity sha512-sJ4CyO3ZPaoxWpLQTJpH/gWD+tCIra2OJ9UPvrX1siyJkgh8NOAybRejJ/g2xHyOdAuoSE0lPRJwRl8AZSXYJQ==
+undici@^4.12.2:
+  version "4.12.2"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-4.12.2.tgz#f2fc50ca77a774ed8c0e7067c9361ee18a2f422b"
+  integrity sha512-RZj6SbkQFs5O/pJCboGEo6l5DTCe3Zg4r/8Z/0/2qnIv08+s6zL4akohOPMYWKc3mzwv15WTvsfMWaafZcvYoQ==
 
 uri-js@^4.2.2:
   version "4.4.1"
