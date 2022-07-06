@@ -1,9 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/*
-
-	undici-wrapper
-
-*/
 
 // load node utils
 const undici = require('undici')
@@ -13,40 +8,33 @@ const AbortController = require('abort-controller')
 const _options = require('./_options')
 const convertReadableStream = require('./convertReadableStream')
 
-// set pool collector
-const clientPool = {}
+const DEFAULT_TIMEOUT = 7e3
 
-const defaultTimeout = 7e3
-
-module.exports = async (inputUrl, options) => {
-	// split host and path
-	const url = new URL(inputUrl)
-	const host = url.origin
-	const path = `${url.pathname}${url.search}`
-
-	// check client for host
-	if (!clientPool[host]) clientPool[host] = new undici.Pool(host, _options)
-
+module.exports = async (url, options) => {
 	// use controller for timeouts
 	const abortController = new AbortController()
 	const abortTimeout = setTimeout(() => {
 		abortController.abort()
-	}, options?.timeout || defaultTimeout)
+	}, options?.timeout || DEFAULT_TIMEOUT)
+
+	// calculcate redirect
+	const maxRedirections =
+		options?.maxRedirections !== null && options?.maxRedirections !== undefined
+			? options.maxRedirections
+			: 5
 
 	// prepare options
 	const requestOptions = {
 		..._options,
-		path,
-		origin: host,
 		method: options?.method || 'GET',
 		body: options?.body || undefined,
 		signal: abortController.signal,
-		maxRedirections: options?.maxRedirections || 5,
+		maxRedirections,
 	}
 	if (options?.headers) requestOptions.headers = { ...requestOptions.headers, ...options.headers }
 
 	// make actual request
-	const { statusCode, headers, trailers, body } = await clientPool[host].request(requestOptions)
+	const { statusCode, headers, trailers, body } = await undici.request(url, requestOptions)
 
 	// remove timeout since request finished beforehand
 	clearTimeout(abortTimeout)
@@ -60,7 +48,7 @@ module.exports = async (inputUrl, options) => {
 
 	// detect/ set redirect
 	const redirect =
-		statusCode >= 300 && statusCode < 400 && headers.location ? new URL(headers.location, inputUrl) : null
+		statusCode >= 300 && statusCode < 400 && headers.location ? new URL(headers.location, url) : null
 
 	// fetch header vars
 	const contentType = headers['content-type']

@@ -1,6 +1,6 @@
 {
 	"name": "undici-wrapper",
-	"version": "0.0.6",
+	"version": "0.1.0",
 	"description": "Lightweight wrapper around Undici HTTP requests",
 	"main": "src/index.js",
 	"scripts": {
